@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vt100logging"
+version = "0.0.1"
+authors = [{ name = "Grzegorz Grzęda", email = "grzegorz.grzeda@g2labs.pl" }]
+description = "VT100 logging for Python"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/g2labs-grzegorz-grzeda/vt100logging"
+Issues = "https://github.com/g2labs-grzegorz-grzeda/vt100logging/issues"
