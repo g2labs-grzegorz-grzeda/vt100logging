@@ -25,11 +25,15 @@ def vt100logging_initialize(name, is_verbose=False):
             formatter = logging.Formatter(log_fmt)
             return formatter.format(record)
     VT100_LOGGER = logging.getLogger(name)
-    VT100_LOGGER.setLevel(logging.INFO)
+    VT100_LOGGER.setLevel(logging.DEBUG if is_verbose else logging.INFO)
     ch = logging.StreamHandler()
     ch.setLevel(logging.DEBUG)
     ch.setFormatter(VT100Formatter())
     VT100_LOGGER.addHandler(ch)
+
+
+def D(text):
+    VT100_LOGGER.debug(text)
 
 
 def I(text):
