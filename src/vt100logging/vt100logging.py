@@ -3,7 +3,7 @@ import logging
 VT100_LOGGER: logging.Logger
 
 
-def vt100logging_initialize(name, is_verbose=False):
+def _initialize(name, is_verbose):
     global VT100_LOGGER
 
     class VT100Formatter(logging.Formatter):
@@ -12,9 +12,10 @@ def vt100logging_initialize(name, is_verbose=False):
         yellow = "\x1b[33;20m"
         red = "\x1b[31;20m"
         reset = "\x1b[0m"
-        format = "%(asctime)s -%(levelname)s- %(message)s"
+        format = "%(asctime)s -%(levelname).1s- %(message)s"
 
         FORMATS = {
+            logging.DEBUG: green + format + reset,
             logging.INFO: green + format + reset,
             logging.WARNING: yellow + format + reset,
             logging.ERROR: red + format + reset,
@@ -32,17 +33,17 @@ def vt100logging_initialize(name, is_verbose=False):
     VT100_LOGGER.addHandler(ch)
 
 
-def D(text):
+def _debug(text):
     VT100_LOGGER.debug(text)
 
 
-def I(text):
+def _info(text):
     VT100_LOGGER.info(text)
 
 
-def W(text):
+def _warning(text):
     VT100_LOGGER.warning(text)
 
 
-def E(text):
+def _error(text):
     VT100_LOGGER.error(text)
