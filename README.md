@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![example log feed](res/screenshot.png)
+![example log feed](https://raw.githubusercontent.com/g2labs-grzegorz-grzeda/vt100logging/main/res/screenshot.png)
 
 The original `logging` package lacks basic coloring of the log output. This does not help when one tries to quickly check on the real time console feed.
 
