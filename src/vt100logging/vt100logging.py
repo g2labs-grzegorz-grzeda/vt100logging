@@ -3,7 +3,7 @@ import logging
 VT100_LOGGER: logging.Logger
 
 
-def _initialize(name, is_verbose):
+def _initialize(name, is_verbose, store_to_log_file):
     global VT100_LOGGER
 
     class VT100Formatter(logging.Formatter):
@@ -32,6 +32,13 @@ def _initialize(name, is_verbose):
     ch.setFormatter(VT100Formatter())
     VT100_LOGGER.addHandler(ch)
 
+    if store_to_log_file:
+        fh = logging.FileHandler(f"{name}.log")
+        fh.setLevel(logging.DEBUG)
+        fh.setFormatter(logging.Formatter(
+            "%(asctime)s -%(levelname).1s- %(message)s"))
+        VT100_LOGGER.addHandler(fh)
+
 
 def _debug(text):
     VT100_LOGGER.debug(text)
@@ -47,3 +54,7 @@ def _warning(text):
 
 def _error(text):
     VT100_LOGGER.error(text)
+
+
+def _exception(text):
+    VT100_LOGGER.exception(text)
